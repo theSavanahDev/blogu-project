@@ -21,13 +21,15 @@
 		"paths": {
 			"@/*": ["./src/*"],
 			"@/app/*": ["./src/app/(frontend)/*"],
-			"@/blocks/*": ["./src/payload/blocks/*"],
-			"@/collections/*": ["./src/payload/collections/*"],
 			"@/components/*": ["./src/components/*"],
-			"@/globals/*": ["./src/payload/globals/*"],
 			"@/lib/*": ["./src/lib/*"],
 			"@/payload/*": ["./src/app/(payload)/*"],
-			"@/payload-config": ["./src/payload.config.ts"]
+			"@/payload-config": ["./src/payload.config.ts"],
+			"@/payload-access/*": ["./src/payload/access/*"],
+			"@/payload-blocks/*": ["./src/payload/blocks/*"],
+			"@/payload-collections/*": ["./src/payload/collections/*"],
+			"@/payload-globals/*": ["./src/payload/globals/*"],
+			"@/payload-hooks/*": ["./src/payload/hooks/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
