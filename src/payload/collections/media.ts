@@ -12,15 +12,15 @@ export const Media: CollectionConfig = {
 	upload: {
 		imageSizes: [
 			{
-				name: "avartar",
-				width: 150,
-				height: 150,
+				name: "thumbnail",
+				width: 320,
+				height: 320,
 				position: "centre",
 			},
 			{
-				name: "thumbnail",
-				width: 300,
-				height: 400,
+				name: "card",
+				width: 640,
+				height: 768,
 				position: "centre",
 			},
 		],

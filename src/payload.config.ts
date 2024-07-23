@@ -4,17 +4,25 @@ import { fileURLToPath } from "url";
 import { buildConfig } from "payload";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { resendAdapter } from "@payloadcms/email-resend";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import {
+	BoldFeature,
+	HeadingFeature,
+	ItalicFeature,
+	LinkFeature,
+	lexicalEditor,
+	UnderlineFeature,
+} from "@payloadcms/richtext-lexical";
 import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
 
-import { Users } from "@/payload-collections/users";
+import { Authors } from "@/payload-collections/authors";
 import { Media } from "@/payload-collections/media";
+import { Users } from "@/payload-collections/users";
 
 import { Icon } from "@/components/payload/label-icon";
 import { Logo } from "@/components/payload/label-logo";
 
 const fileName = fileURLToPath(import.meta.url);
-const databaseURI = process.env.NODE_ENV === "production" ? process.env.DB_URI_PROD! : process.env.DB_URI_DEV!;
+const databaseURI = process.env.NODE_ENV === "development" ? process.env.DB_URI_DEV! : process.env.DB_URI_PRD!;
 const directoryName = path.dirname(fileName);
 const payloadSecret = process.env.PAYLOAD_SECRET!;
 const resendAPIKey = process.env.RESEND_API_KEY!;
@@ -31,9 +39,13 @@ export default buildConfig({
 			graphics: { Icon, Logo },
 		},
 	},
-	collections: [Users, Media],
+	collections: [Authors, Media, Users],
 	db: mongooseAdapter({ url: databaseURI }),
-	editor: lexicalEditor({}),
+	editor: lexicalEditor({
+		features: () => {
+			return [BoldFeature(), HeadingFeature(), ItalicFeature(), LinkFeature(), UnderlineFeature()];
+		},
+	}),
 	email: resendAdapter({
 		defaultFromAddress: "mta@s3.co.ke",
 		defaultFromName: "MTA @ S3",
