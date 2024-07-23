@@ -18,6 +18,7 @@ import { Authors } from "@/payload-collections/authors";
 import { Categories } from "@/payload-collections/categories";
 import { Media } from "@/payload-collections/media";
 import { Users } from "@/payload-collections/users";
+import { Posts } from "@/payload-collections/posts";
 
 import { Icon } from "@/components/payload/label-icon";
 import { Logo } from "@/components/payload/label-logo";
@@ -40,7 +41,7 @@ export default buildConfig({
 			graphics: { Icon, Logo },
 		},
 	},
-	collections: [Authors, Categories, Media, Users],
+	collections: [Posts, Categories, Authors, Media, Users],
 	db: mongooseAdapter({ url: databaseURI }),
 	editor: lexicalEditor({
 		features: () => {
@@ -60,6 +61,7 @@ export default buildConfig({
 		defaultFromName: "MTA @ S3",
 		apiKey: resendAPIKey,
 	}),
+	globals: [],
 	plugins: [
 		uploadthingStorage({
 			collections: {
