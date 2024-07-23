@@ -6,16 +6,25 @@ import {
 	lexicalHTML,
 } from "@payloadcms/richtext-lexical";
 
+import { anyoneAccess } from "@/payload-access/access-anyone";
+import { authenticatedAccess } from "@/payload-access/access-authenticated";
+
 import type { CollectionConfig } from "payload";
 
 export const Authors: CollectionConfig = {
 	slug: "authors",
-	access: {
-		read: () => true,
-	},
 	labels: {
 		singular: "Author",
 		plural: "Authors",
+	},
+	access: {
+		create: authenticatedAccess,
+		delete: authenticatedAccess,
+		read: anyoneAccess,
+		update: authenticatedAccess,
+	},
+	admin: {
+		useAsTitle: "name",
 	},
 	fields: [
 		{

@@ -15,6 +15,7 @@ import {
 import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
 
 import { Authors } from "@/payload-collections/authors";
+import { Categories } from "@/payload-collections/categories";
 import { Media } from "@/payload-collections/media";
 import { Users } from "@/payload-collections/users";
 
@@ -39,11 +40,19 @@ export default buildConfig({
 			graphics: { Icon, Logo },
 		},
 	},
-	collections: [Authors, Media, Users],
+	collections: [Authors, Categories, Media, Users],
 	db: mongooseAdapter({ url: databaseURI }),
 	editor: lexicalEditor({
 		features: () => {
-			return [BoldFeature(), HeadingFeature(), ItalicFeature(), LinkFeature(), UnderlineFeature()];
+			return [
+				BoldFeature(),
+				HeadingFeature(),
+				ItalicFeature(),
+				LinkFeature({
+					enabledCollections: [],
+				}),
+				UnderlineFeature(),
+			];
 		},
 	}),
 	email: resendAdapter({

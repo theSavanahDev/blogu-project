@@ -1,32 +1,29 @@
 import { authenticatedAccess } from "@/payload-access/access-authenticated";
+import { authenticatedOrPublishedAccess } from "@/payload-access/access-authenticated-or-published";
 
 import type { CollectionConfig } from "payload";
 
-export const Users: CollectionConfig = {
-	slug: "users",
+export const Posts: CollectionConfig = {
+	slug: "posts",
 	labels: {
-		singular: "User",
-		plural: "Users",
-	},
-	admin: {
-		defaultColumns: ["name", "email"],
-		useAsTitle: "name",
+		singular: "Post",
+		plural: "Posts",
 	},
 	access: {
-		admin: authenticatedAccess,
 		create: authenticatedAccess,
 		delete: authenticatedAccess,
-		read: authenticatedAccess,
+		read: authenticatedOrPublishedAccess,
 		update: authenticatedAccess,
 	},
-	auth: true,
+	admin: {
+		useAsTitle: "title",
+	},
 	fields: [
 		{
-			name: "name",
-			label: "Name",
+			name: "title",
+			label: "Title",
 			type: "text",
 			required: true,
 		},
 	],
-	timestamps: true,
 };

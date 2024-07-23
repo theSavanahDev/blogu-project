@@ -28,6 +28,7 @@
 			"@/payload-access/*": ["./src/payload/access/*"],
 			"@/payload-blocks/*": ["./src/payload/blocks/*"],
 			"@/payload-collections/*": ["./src/payload/collections/*"],
+			"@/payload-fields/*": ["./src/payload/fields/*"],
 			"@/payload-globals/*": ["./src/payload/globals/*"],
 			"@/payload-hooks/*": ["./src/payload/hooks/*"]
 		}

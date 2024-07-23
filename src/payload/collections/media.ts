@@ -1,13 +1,19 @@
+import { anyoneAccess } from "@/payload-access/access-anyone";
+import { authenticatedAccess } from "@/payload-access/access-authenticated";
+
 import type { CollectionConfig } from "payload";
 
 export const Media: CollectionConfig = {
 	slug: "media",
-	access: {
-		read: () => true,
-	},
 	labels: {
 		singular: "Media",
 		plural: "Media",
+	},
+	access: {
+		create: authenticatedAccess,
+		delete: authenticatedAccess,
+		read: anyoneAccess,
+		update: authenticatedAccess,
 	},
 	upload: {
 		imageSizes: [
