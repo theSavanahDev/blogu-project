@@ -28,7 +28,8 @@ const databaseURI = process.env.NODE_ENV === "development" ? process.env.DB_URI_
 const directoryName = path.dirname(fileName);
 const payloadSecret = process.env.PAYLOAD_SECRET!;
 const resendAPIKey = process.env.RESEND_API_KEY!;
-const uploadthingSecret = process.env.UPLOADTHING_SECRET!;
+const uploadthingSecret =
+	process.env.NODE_ENV === "development" ? process.env.UPLOADTHING_SECRET_DEV! : process.env.UPLOADTHING_SECRET_PRD!;
 
 export default buildConfig({
 	admin: {
