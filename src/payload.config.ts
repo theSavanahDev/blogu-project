@@ -5,12 +5,16 @@ import { buildConfig } from "payload";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { resendAdapter } from "@payloadcms/email-resend";
 import {
+	BlockquoteFeature,
 	BoldFeature,
 	HeadingFeature,
+	InlineCodeFeature,
 	ItalicFeature,
 	LinkFeature,
 	lexicalEditor,
+	OrderedListFeature,
 	UnderlineFeature,
+	UnorderedListFeature,
 } from "@payloadcms/richtext-lexical";
 import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
 
@@ -47,13 +51,17 @@ export default buildConfig({
 	editor: lexicalEditor({
 		features: () => {
 			return [
+				BlockquoteFeature(),
 				BoldFeature(),
 				HeadingFeature(),
+				InlineCodeFeature(),
 				ItalicFeature(),
 				LinkFeature({
 					enabledCollections: [],
 				}),
+				OrderedListFeature(),
 				UnderlineFeature(),
+				UnorderedListFeature(),
 			];
 		},
 	}),
