@@ -41,20 +41,20 @@ export const Posts: CollectionConfig = {
 			name: "categories",
 			label: "Categories",
 			type: "relationship",
+			relationTo: "categories",
 			admin: {
 				position: "sidebar",
 			},
 			hasMany: true,
-			relationTo: "categories",
 		},
 		{
 			name: "authors",
 			label: "Author",
 			type: "relationship",
+			relationTo: "authors",
 			admin: {
 				position: "sidebar",
 			},
-			relationTo: "authors",
 		},
 		{
 			name: "featured",

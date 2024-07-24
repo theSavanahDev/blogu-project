@@ -1,8 +1,6 @@
 import { anyoneAccess } from "@/payload-access/access-anyone";
 import { authenticatedAccess } from "@/payload-access/access-authenticated";
 
-import { slugField } from "@/payload-fields/field-slug";
-
 import type { CollectionConfig } from "payload";
 
 export const Categories: CollectionConfig = {
@@ -27,6 +25,5 @@ export const Categories: CollectionConfig = {
 			type: "text",
 			required: true,
 		},
-		slugField(),
 	],
 };
