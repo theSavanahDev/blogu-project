@@ -8,8 +8,8 @@ import {
 
 import { slugField } from "@/payload-fields/field-slug";
 
+import { anyoneAccess } from "@/payload-access/access-anyone";
 import { authenticatedAccess } from "@/payload-access/access-authenticated";
-import { authenticatedOrPublishedAccess } from "@/payload-access/access-authenticated-or-published";
 
 import type { CollectionConfig } from "payload";
 
@@ -22,10 +22,11 @@ export const Posts: CollectionConfig = {
 	access: {
 		create: authenticatedAccess,
 		delete: authenticatedAccess,
-		read: authenticatedOrPublishedAccess,
+		read: anyoneAccess,
 		update: authenticatedAccess,
 	},
 	admin: {
+		defaultColumns: ["title", "slug"],
 		useAsTitle: "title",
 	},
 	fields: [
@@ -56,6 +57,15 @@ export const Posts: CollectionConfig = {
 			relationTo: "authors",
 		},
 		{
+			name: "featured",
+			label: "Featured Post",
+			type: "checkbox",
+			admin: {
+				position: "sidebar",
+			},
+			defaultValue: false,
+		},
+		{
 			name: "image",
 			label: "Featured Image",
 			type: "upload",
@@ -81,6 +91,7 @@ export const Posts: CollectionConfig = {
 					InlineToolbarFeature(),
 				],
 			}),
+			required: true,
 		},
 		lexicalHTML("content", { name: "content_html" }),
 	],

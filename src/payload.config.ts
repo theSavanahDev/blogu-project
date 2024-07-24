@@ -53,12 +53,10 @@ export default buildConfig({
 			return [
 				BlockquoteFeature(),
 				BoldFeature(),
-				HeadingFeature(),
+				HeadingFeature({ enabledHeadingSizes: ["h1", "h2", "h3"] }),
 				InlineCodeFeature(),
 				ItalicFeature(),
-				LinkFeature({
-					enabledCollections: [],
-				}),
+				LinkFeature({ enabledCollections: [] }),
 				OrderedListFeature(),
 				UnderlineFeature(),
 				UnorderedListFeature(),
