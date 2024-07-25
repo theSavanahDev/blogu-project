@@ -70,6 +70,7 @@ export const Posts: CollectionConfig = {
 				position: "sidebar",
 			},
 			hasMany: true,
+			required: true,
 		},
 		{
 			name: "authors",
@@ -79,6 +80,7 @@ export const Posts: CollectionConfig = {
 			admin: {
 				position: "sidebar",
 			},
+			required: true,
 		},
 		{
 			name: "featured",
