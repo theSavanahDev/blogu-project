@@ -29,7 +29,7 @@ export const Comments: CollectionConfig = {
 		{
 			name: "email",
 			label: "Email",
-			type: "text",
+			type: "email",
 			required: true,
 		},
 		{
