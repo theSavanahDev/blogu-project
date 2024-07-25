@@ -1,10 +1,4 @@
-import {
-	FixedToolbarFeature,
-	HTMLConverterFeature,
-	InlineToolbarFeature,
-	lexicalEditor,
-	lexicalHTML,
-} from "@payloadcms/richtext-lexical";
+import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from "@payloadcms/richtext-lexical";
 
 import { anyoneAccess } from "@/payload-access/access-anyone";
 import { authenticatedAccess } from "@/payload-access/access-authenticated";
@@ -44,12 +38,7 @@ export const Authors: CollectionConfig = {
 			label: "Bio",
 			type: "richText",
 			editor: lexicalEditor({
-				features: ({ rootFeatures }) => [
-					...rootFeatures,
-					FixedToolbarFeature(),
-					HTMLConverterFeature({}),
-					InlineToolbarFeature(),
-				],
+				features: ({ rootFeatures }) => [...rootFeatures, HTMLConverterFeature({})],
 			}),
 		},
 		lexicalHTML("bio", { name: "bio_html" }),

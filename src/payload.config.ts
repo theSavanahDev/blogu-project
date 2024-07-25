@@ -7,8 +7,10 @@ import { resendAdapter } from "@payloadcms/email-resend";
 import {
 	BlockquoteFeature,
 	BoldFeature,
+	FixedToolbarFeature,
 	HeadingFeature,
 	InlineCodeFeature,
+	InlineToolbarFeature,
 	ItalicFeature,
 	LinkFeature,
 	lexicalEditor,
@@ -54,8 +56,10 @@ export default buildConfig({
 			return [
 				BlockquoteFeature(),
 				BoldFeature(),
+				FixedToolbarFeature(),
 				HeadingFeature({ enabledHeadingSizes: ["h1", "h2", "h3"] }),
 				InlineCodeFeature(),
+				InlineToolbarFeature(),
 				ItalicFeature(),
 				LinkFeature({ enabledCollections: [] }),
 				OrderedListFeature(),
