@@ -1,10 +1,4 @@
-import {
-	FixedToolbarFeature,
-	HTMLConverterFeature,
-	InlineToolbarFeature,
-	lexicalEditor,
-	lexicalHTML,
-} from "@payloadcms/richtext-lexical";
+import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from "@payloadcms/richtext-lexical";
 
 import { slugField } from "@/payload-fields/field-slug";
 
