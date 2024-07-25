@@ -36,6 +36,30 @@ export const Posts: CollectionConfig = {
 			type: "text",
 			required: true,
 		},
+		{
+			name: "image",
+			label: "Featured Image",
+			type: "upload",
+			relationTo: "media",
+			required: true,
+		},
+		{
+			name: "excerpt",
+			label: "Excerpt",
+			type: "textarea",
+			maxLength: 500,
+			required: true,
+		},
+		{
+			name: "content",
+			label: "Content",
+			type: "richText",
+			editor: lexicalEditor({
+				features: ({ rootFeatures }) => [...rootFeatures, HTMLConverterFeature({})],
+			}),
+			required: true,
+		},
+		lexicalHTML("content", { name: "content_html" }),
 		slugField(),
 		{
 			name: "categories",
@@ -65,34 +89,5 @@ export const Posts: CollectionConfig = {
 			},
 			defaultValue: false,
 		},
-		{
-			name: "image",
-			label: "Featured Image",
-			type: "upload",
-			relationTo: "media",
-			required: true,
-		},
-		{
-			name: "excerpt",
-			label: "Excerpt",
-			type: "textarea",
-			maxLength: 500,
-			required: true,
-		},
-		{
-			name: "content",
-			label: "Content",
-			type: "richText",
-			editor: lexicalEditor({
-				features: ({ rootFeatures }) => [
-					...rootFeatures,
-					FixedToolbarFeature(),
-					HTMLConverterFeature({}),
-					InlineToolbarFeature(),
-				],
-			}),
-			required: true,
-		},
-		lexicalHTML("content", { name: "content_html" }),
 	],
 };
